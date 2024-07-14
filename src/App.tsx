@@ -1,46 +1,32 @@
-import bgVid from "./assets/bg-vid.mp4";
-import bgPoster from "./assets/bg-poster.png";
 import SignUpForm from "./components/SignUpForm";
 import Countdown from "./components/Countdown";
+import SignUpBackground from "./components/SignUpBackground";
+import StickyLabel from "./components/StickyLabel";
 
 export default function App() {
   return (
-    <div className="h-screen">
-      <div className="absolute -z-10 h-screen w-screen">
-        <video
-          autoPlay
-          muted
-          loop
-          className="h-full w-full object-cover"
-          poster={bgPoster}
-        >
-          <source src={bgVid} type="video/mp4" />
-        </video>
+    <SignUpBackground>
+      <div>
+        <h1 className="pb-2 text-center font-unica text-6xl font-bold text-stone-300/60 drop-shadow">
+          The Poison Marshes
+        </h1>
+        <Countdown />
       </div>
-      <div className="absolute -z-10 h-screen w-screen bg-gradient-to-b from-stone-800 via-stone-700/40 to-yellow-300/70"></div>
-      <div className="flex h-full w-full flex-col items-center justify-evenly p-4">
+      <StickyLabel>
         <div>
-          <h1 className="pb-2 text-center font-unica text-6xl font-bold text-stone-300/60 drop-shadow">
-            The Poison Marshes
-          </h1>
-          <Countdown />
+          <p>We need your help to save the village.</p>
+          <p>Find out more - soon</p>
         </div>
-        <div className="flex w-11/12 -rotate-2 flex-col items-center justify-center gap-8 rounded-lg bg-stone-300/90 p-4 drop-shadow-xl md:w-[700px] md:p-8">
-          <div className="text-center font-rock text-lg font-bold text-stone-700 md:text-3xl">
-            <p>We need your help to save the village.</p>
-            <p>Find out more - soon</p>
-          </div>
-          <SignUpForm />
-        </div>
-        <div className="absolute bottom-0 w-full py-4 text-center font-special text-neutral">
-          <p>
-            The Poison Marshes is part of{" "}
-            <a href="https://alrewas-artsfest.co.uk" target="_blank">
-              Alrewas Arts Festival 2024
-            </a>
-          </p>
-        </div>
+        <SignUpForm />
+      </StickyLabel>
+      <div className="absolute bottom-0 w-full py-4 text-center font-special text-neutral">
+        <p>
+          The Poison Marshes is part of{" "}
+          <a href="https://alrewas-artsfest.co.uk" target="_blank">
+            Alrewas Arts Festival 2024
+          </a>
+        </p>
       </div>
-    </div>
+    </SignUpBackground>
   );
 }

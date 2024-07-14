@@ -1,39 +1,78 @@
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
-import { FormEvent } from "react";
+import axios, { AxiosError } from "axios";
+import { FormEvent, useRef } from "react";
+import { z } from "zod";
 
 export default function SignUpForm() {
+  const formRef = useRef<HTMLFormElement>(null);
+
   const submit = useMutation({
     mutationFn: (email: string) => {
       return axios.post(`${import.meta.env.VITE_API_URL}/new-user`, { email });
     },
   });
 
+  const getErrorMessage = (error: AxiosError): string => {
+    if (!error.response) {
+      return "An unknown error occurred. Please try again later.";
+    }
+
+    switch (error.response.status) {
+      case 400:
+        return "Bad request. Please check your input.";
+      case 409:
+        return "This email is already registered. Please use a different email.";
+      case 500:
+        return "Internal server error. Please try again later.";
+      default:
+        return "An error occurred. Please try again.";
+    }
+  };
+
+  const emailSchema = z.string().email("Please enter a valid email");
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
     const email = formData.get("email") as string;
-    console.log(email);
+    const result = emailSchema.safeParse(email);
+    if (!result.success) {
+      return;
+    }
     submit.mutate(email);
+  };
+
+  const handleReset = () => {
+    if (formRef.current) {
+      formRef.current.reset();
+    }
+    submit.reset();
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="mx-2 flex flex-col gap-2 md:flex-row"
+      className="mx-2 flex flex-col gap-2 font-special text-base"
+      ref={formRef}
     >
       <input
         type="email"
         name="email"
-        className="input input-bordered bg-transparent text-stone-800"
+        className="input input-bordered border-yellow-600 bg-transparent text-stone-800"
+        required
       />
       {submit.isSuccess ? (
         "Check your email"
       ) : submit.isError ? (
-        "Something has gone wrong"
+        <span className="flex items-center justify-center gap-2 text-red-500">
+          {getErrorMessage(submit.error as AxiosError)}
+          <button className="btn btn-error btn-xs" onClick={handleReset}>
+            Try again
+          </button>
+        </span>
       ) : (
         <button
-          className="btn border-0 bg-stone-400 text-neutral"
+          className="0 btn border-0 bg-yellow-500 text-neutral drop-shadow-sm"
           type="submit"
         >
           Join Us{" "}
