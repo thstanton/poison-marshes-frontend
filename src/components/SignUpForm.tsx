@@ -59,6 +59,7 @@ export default function SignUpForm() {
         type="email"
         name="email"
         className="input input-bordered border-yellow-600 bg-transparent text-stone-800"
+        placeholder="Enter Your Email"
         required
       />
       {submit.isSuccess ? (
