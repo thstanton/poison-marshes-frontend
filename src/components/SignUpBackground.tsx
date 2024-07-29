@@ -7,7 +7,7 @@ export default function SignUpBackground({
   children: React.ReactNode;
 }) {
   return (
-    <div className="h-screen">
+    <div className="h-dvh">
       <div className="absolute -z-10 h-screen w-screen">
         <video
           autoPlay
