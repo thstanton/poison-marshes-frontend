@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import SignedUp from "./routes/SignedUp.tsx";
 import WellfieldHome from "./routes/WellfieldHome.tsx";
+import NewsArticle from "./routes/NewsArticle.tsx";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/wellfield",
     element: <WellfieldHome />,
+  },
+  {
+    path: "/news",
+    element: <NewsArticle />,
   },
 ]);
 
