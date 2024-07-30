@@ -1,6 +1,6 @@
 const NewsArticle = () => {
 return (
-<div className="max-w-4xl mx-auto bg-white">
+<div className="mx-auto bg-white">
     <div className="mb-6 bg-yellow-500 text-black w-full p-4">
         <h2 className="text-lg font-bold uppercase border-b border-black">News</h2>
         <p>Bringing you the latest goss in Alrewas</p>
