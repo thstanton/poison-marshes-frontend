@@ -8,7 +8,9 @@ export default function SignUpForm() {
 
   const submit = useMutation({
     mutationFn: (email: string) => {
-      return axios.post(`${import.meta.env.VITE_API_URL}/new-user`, { email });
+      return axios.post(`${import.meta.env.VITE_API_URL}/api/new-user`, {
+        email,
+      });
     },
   });
 
