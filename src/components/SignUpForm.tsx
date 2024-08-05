@@ -1,16 +1,15 @@
 import { useMutation } from "@tanstack/react-query";
-import axios, { AxiosError } from "axios";
+import { AxiosError } from "axios";
 import { FormEvent, useRef } from "react";
 import { z } from "zod";
+import { api } from "../lib/axiosConfig";
 
 export default function SignUpForm() {
   const formRef = useRef<HTMLFormElement>(null);
 
   const submit = useMutation({
     mutationFn: (email: string) => {
-      return axios.post(`${import.meta.env.VITE_API_URL}/api/new-user`, {
-        email,
-      });
+      return api.post("/api/new-user", { email }, { withCredentials: true });
     },
   });
 

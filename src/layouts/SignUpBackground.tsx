@@ -1,11 +1,8 @@
 import bgVid from "../assets/bg-vid.mp4";
 import bgPoster from "../assets/bg-poster.png";
+import { Outlet } from "react-router";
 
-export default function SignUpBackground({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function SignUpBackground() {
   return (
     <div className="h-dvh">
       <div className="absolute -z-10 h-screen w-screen">
@@ -21,7 +18,7 @@ export default function SignUpBackground({
       </div>
       <div className="absolute -z-10 h-screen w-screen bg-gradient-to-b from-stone-800 via-stone-700/40 to-yellow-300/70"></div>
       <div className="flex h-full w-full flex-col items-center justify-evenly p-4">
-        {children}
+        <Outlet />
         <div className="absolute bottom-0 w-full py-4 text-center font-special text-neutral">
           <p>
             The Poison Marshes is part of{" "}

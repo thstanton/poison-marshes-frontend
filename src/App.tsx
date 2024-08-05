@@ -1,11 +1,10 @@
 import SignUpForm from "./components/SignUpForm";
 import Countdown from "./components/Countdown";
-import SignUpBackground from "./components/SignUpBackground";
 import StickyLabel from "./components/StickyLabel";
 
 export default function App() {
   return (
-    <SignUpBackground>
+    <>
       <div>
         <h1 className="pb-2 text-center font-unica text-6xl font-bold text-stone-300/60 drop-shadow">
           The Poison Marshes
@@ -27,6 +26,6 @@ export default function App() {
           </a>
         </p>
       </div>
-    </SignUpBackground>
+    </>
   );
 }
