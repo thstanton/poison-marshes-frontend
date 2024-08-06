@@ -1,22 +1,54 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
 import "./index.css";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-// import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  QueryCache,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+import { AxiosError } from "axios";
+import { api } from "./lib/axiosConfig.ts";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import ErrorPage from "./error-page.tsx";
+import JournalLayout from "./layouts/JournalLayout.tsx";
+import SignUpBackground from "./layouts/SignUpBackground.tsx";
+import Journal from "./routes/Journal.tsx";
+import LandingPage from "./routes/LandingPage.tsx";
+import LevelPage from "./routes/LevelPage.tsx";
+import Login from "./routes/Login.tsx";
+import Register from "./routes/Register.tsx";
 import SignedUp from "./routes/SignedUp.tsx";
 import WellfieldHome from "./routes/WellfieldHome.tsx";
-import Register from "./routes/Register.tsx";
-import Login from "./routes/Login.tsx";
-import UserProvider from "./contexts/UserProvider.tsx";
-import Journal from "./routes/Journal.tsx";
-import ErrorPage from "./error-page.tsx";
-import SignUpBackground from "./layouts/SignUpBackground.tsx";
-import { api } from "./lib/axiosConfig.ts";
-import { Game } from "./types/Game.ts";
-import JournalLayout from "./layouts/JournalLayout.tsx";
-import LevelPage from "./routes/LevelPage.tsx";
+import VideoPage from "./routes/VideoPage.tsx";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 30000,
+      retry(failureCount, error) {
+        if (
+          error instanceof AxiosError &&
+          (error.response?.status === 401 || error.response?.status === 400)
+        ) {
+          return false;
+        }
+        return failureCount <= 1;
+      },
+    },
+  },
+  queryCache: new QueryCache({
+    onError(error) {
+      if (
+        error instanceof AxiosError &&
+        (error.response?.status === 401 || error.response?.status === 400)
+      ) {
+        console.log("Attempting to refresh token...");
+        api.post("/auth/refresh");
+      }
+    },
+  }),
+});
 
 const router = createBrowserRouter([
   {
@@ -25,7 +57,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <App />,
+        element: <LandingPage />,
       },
       {
         path: "/signed-up",
@@ -42,35 +74,21 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "journal",
     element: <JournalLayout />,
+    path: "/journal",
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "",
+        index: true,
         element: <Journal />,
-        loader: async (): Promise<Game> => {
-          try {
-            const response = await api.get("/games/current");
-            return response.data;
-          } catch (error) {
-            throw new Response("Failed to fetch game data", { status: 500 });
-          }
-        },
       },
       {
-        path: "level/:levelSequence/:actSequence",
+        path: "levels",
         element: <LevelPage />,
-        loader: async ({ params }) => {
-          try {
-            const response = await api.get(
-              `/levels/act/${params.actSequence}/sequence/${params.levelSequence}`,
-            );
-            return response.data;
-          } catch (error) {
-            throw new Response("Failed to fetch level data", { status: 500 });
-          }
-        },
+      },
+      {
+        path: "video",
+        element: <VideoPage />,
       },
     ],
   },
@@ -80,15 +98,11 @@ const router = createBrowserRouter([
   },
 ]);
 
-const queryClient = new QueryClient();
-
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <UserProvider>
-        <RouterProvider router={router} />
-      </UserProvider>
-      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+      <RouterProvider router={router} />
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </React.StrictMode>,
 );

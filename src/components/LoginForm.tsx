@@ -1,19 +1,19 @@
 import { useMutation } from "@tanstack/react-query";
 import { LoginDetails } from "../types/Account";
-import { useUser } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 import { api } from "../lib/axiosConfig";
+import { useUser } from "../hooks/useUser";
 
 export default function LoginForm() {
-  const userContext = useUser();
   const navigate = useNavigate();
+  const { refetch } = useUser();
 
   const submit = useMutation({
     mutationFn: (loginDetails: LoginDetails) => {
       return api.post("/auth/login", loginDetails, { withCredentials: true });
     },
-    onSuccess(data) {
-      userContext?.setUser(data.data.account);
+    onSuccess() {
+      refetch();
       navigate("/journal");
     },
   });

@@ -1,3 +1,6 @@
+import { Game } from "./Game";
+import { User } from "./User";
+
 export interface AccountCreateDto {
   email: string;
   name: string;
@@ -9,15 +12,9 @@ export interface LoginDetails {
   password: string;
 }
 
-export interface AccountWithUserWithoutPassword {
-  user: {
-    id: number;
-    email: string;
-    createdAt: Date;
-    updatedAt: Date;
-    confirmed: boolean;
-    accountId: number | null;
-  };
+export interface Account {
+  user: User;
+  game?: Game;
   name: string;
   id: number;
   isAdmin: boolean;

@@ -6,9 +6,9 @@ export interface Level {
   name: string;
   flavourText: string;
   task: string;
-  solution: null;
+  solution?: string;
   hints: string[];
-  videoUrl: null;
+  videoId?: string;
   createdAt: string;
   updatedAt: string;
   actSequence: number;
