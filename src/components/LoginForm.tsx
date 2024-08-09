@@ -10,7 +10,7 @@ export default function LoginForm() {
 
   const submit = useMutation({
     mutationFn: (loginDetails: LoginDetails) => {
-      return api.post("/auth/login", loginDetails, { withCredentials: true });
+      return api.post("/auth/login", loginDetails);
     },
     onSuccess() {
       refetch();

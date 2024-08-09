@@ -1,4 +1,5 @@
 import { Act } from "./Act";
+import { Email } from "./Email";
 
 export interface Level {
   id: number;
@@ -13,4 +14,5 @@ export interface Level {
   updatedAt: string;
   actSequence: number;
   act: Act;
+  email?: Email;
 }

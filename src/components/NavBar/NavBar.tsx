@@ -1,4 +1,5 @@
-import { useUser } from "../hooks/useUser";
+import { Link } from "react-router-dom";
+import { useUser } from "../../hooks/useUser";
 import LogOutButton from "./LogOutButton";
 
 export default function NavBar() {
@@ -10,8 +11,11 @@ export default function NavBar() {
       </div>
       <div className="navbar-end gap-4">
         <div className="flex flex-row items-center gap-2">
-          <h3>{user?.name}</h3>
+          <h3>
+            <Link to="/journal">{user?.name}'s Journal</Link>
+          </h3>
         </div>
+        {user?.isAdmin && <Link to="/admin">Admin Tools</Link>}
         <LogOutButton />
       </div>
     </div>

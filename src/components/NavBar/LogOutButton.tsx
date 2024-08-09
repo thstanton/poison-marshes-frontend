@@ -1,16 +1,18 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { api } from "../../lib/axiosConfig";
 import { useNavigate } from "react-router";
-import { api } from "../lib/axiosConfig";
 
 export default function LogOutButton() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const logout = useMutation({
     mutationFn: () => {
-      return api.post("/auth/logout", {}, { withCredentials: true });
+      return api.post("/auth/logout");
     },
     onSuccess() {
       queryClient.invalidateQueries({ queryKey: ["user"] });
+    },
+    onSettled() {
       navigate("/login");
     },
   });

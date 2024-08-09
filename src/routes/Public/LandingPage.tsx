@@ -1,6 +1,6 @@
-import Countdown from "../components/Countdown";
-import SignUpForm from "../components/SignUpForm";
-import StickyLabel from "../components/StickyLabel";
+import Countdown from "../../components/Countdown";
+import SignUpForm from "../../components/SignUpForm";
+import StickyLabel from "../../components/UI/StickyLabel";
 
 export default function LandingPage() {
   return (

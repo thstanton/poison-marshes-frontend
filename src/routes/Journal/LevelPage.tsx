@@ -1,6 +1,6 @@
-import LevelDisplay from "../components/LevelDisplay";
-import LoadingIndicator from "../components/LoadingIndicator";
-import { useLevels } from "../hooks/useLevel";
+import LevelDisplay from "../../components/Journal/LevelDisplay";
+import LoadingIndicator from "../../components/UI/LoadingIndicator";
+import { useLevels } from "../../hooks/useLevel";
 import { useState } from "react";
 
 export default function LevelPage() {

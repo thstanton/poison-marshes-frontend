@@ -1,4 +1,4 @@
-import { Level } from "../types/Level";
+import { Level } from "../../types/Level";
 import { Link } from "react-router-dom";
 
 interface LevelDisplayProps {
@@ -29,7 +29,10 @@ export default function LevelDisplay({ level }: LevelDisplayProps) {
           <h2>Task</h2>
         </div>
         <div className="min-h-32 rounded-b-lg bg-yellow-200 p-4 font-special">
-          <p>{level.task}</p>
+          <p>
+            {level.task}
+            <span className="animate-blink font-bold">_</span>
+          </p>
         </div>
       </div>
     </>

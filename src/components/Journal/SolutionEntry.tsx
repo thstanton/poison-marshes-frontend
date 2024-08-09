@@ -6,7 +6,9 @@ export default function SolutionEntry() {
       </div>
       <div className="flex flex-row gap-2 rounded-b-lg bg-green-200 p-4 font-special">
         <input className="input input-bordered w-full border-stone-700 bg-white" />
-        <button className="btn btn-primary">Submit</button>
+        <button className="btn bg-green-700 font-rock text-white">
+          Submit
+        </button>
       </div>
     </div>
   );

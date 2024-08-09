@@ -1,14 +1,14 @@
-import LoginForm from "../components/LoginForm";
-import StickyLabel from "../components/StickyLabel";
+import RegisterAccountForm from "../../components/RegisterAccountForm";
+import StickyLabel from "../../components/UI/StickyLabel";
 
-export default function Login() {
+export default function Register() {
   return (
     <>
       <h1 className="pb-2 text-center font-unica text-6xl font-bold text-stone-300/60 drop-shadow">
         The Poison Marshes
       </h1>
       <StickyLabel>
-        <LoginForm />
+        <RegisterAccountForm />
       </StickyLabel>
     </>
   );

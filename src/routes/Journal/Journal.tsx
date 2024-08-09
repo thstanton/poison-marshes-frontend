@@ -1,8 +1,8 @@
-import ActWaiting from "../components/ActWaiting";
-import HintModal from "../components/HintModal";
-import LevelDisplay from "../components/LevelDisplay";
-import SolutionEntry from "../components/SolutionEntry";
-import { useGame } from "../hooks/useGame";
+import ActWaiting from "../../components/Journal/ActWaiting";
+import HintModal from "../../components/Journal/HintModal";
+import LevelDisplay from "../../components/Journal/LevelDisplay";
+import SolutionEntry from "../../components/Journal/SolutionEntry";
+import { useGame } from "../../hooks/useGame";
 
 export default function Journal() {
   const { data: game } = useGame();

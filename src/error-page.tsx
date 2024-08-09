@@ -1,5 +1,5 @@
 import { isRouteErrorResponse, useRouteError } from "react-router-dom";
-import StickyLabel from "./components/StickyLabel";
+import StickyLabel from "./components/UI/StickyLabel";
 
 export default function ErrorPage() {
   const error = useRouteError();

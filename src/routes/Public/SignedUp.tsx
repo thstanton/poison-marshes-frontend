@@ -1,4 +1,4 @@
-import StickyLabel from "../components/StickyLabel";
+import StickyLabel from "../../components/UI/StickyLabel";
 
 export default function SignedUp() {
   return (
