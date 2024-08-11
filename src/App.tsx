@@ -5,11 +5,9 @@ import ErrorPage from "./error-page";
 import JournalLayout from "./layouts/Journal/JournalLayout";
 import SignUpBackground from "./layouts/SignUpBackground";
 import Journal from "./routes/Journal/Journal";
-// import LandingPage from "./routes/Public/LandingPage";
 import LevelPage from "./routes/Journal/LevelPage";
 import Login from "./routes/Public/Login";
 import Register from "./routes/Public/Register";
-// import SignedUp from "./routes/Public/SignedUp";
 import VideoPage from "./routes/Journal/VideoPage";
 import WellfieldHome from "./routes/Static/WellfieldHome";
 import { AuthProvider } from "./contexts/useAuth";
@@ -20,7 +18,6 @@ import CreateEdit from "./layouts/Journal/Admin/CreateEdit";
 import LevelUpSuccess from "./components/Journal/LevelUpSuccess";
 import LevelUpFail from "./components/Journal/LevelUpFail";
 import About from "./routes/Public/About";
-// import LevelUpdatePage from "./components/Admin/LevelUpdatePage";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -32,14 +29,6 @@ export default function App() {
           path: "/",
           element: <Login />,
         },
-        // {
-        //   path: "/",
-        //   element: <LandingPage />,
-        // },
-        // {
-        //   path: "/signed-up",
-        //   element: <SignedUp />,
-        // },
         {
           path: "/register",
           element: <Register />,
@@ -94,44 +83,12 @@ export default function App() {
                       path: "create",
                       element: <LevelCreateForm />,
                     },
-                    // {
-                    //   path: "edit",
-                    //   element: <LevelUpdatePage />,
-                    // },
                   ],
                 },
-                // {
-                //   path: "acts",
-                //   element: <CreateEdit />,
-                //   // children: [
-                //   //   {
-                //   //     path: "create",
-                //   //     element: <LevelCreateForm />,
-                //   //   },
-                //   //   {
-                //   //     path: "edit",
-                //   //     element: <LevelUpdatePage />,
-                //   //   },
-                //   // ],
-                // },
                 {
                   path: "games",
                   element: <Games />,
                 },
-                // {
-                //   path: "emails",
-                //   element: <CreateEdit />,
-                //   // children: [
-                //   //   {
-                //   //     path: "create",
-                //   //     element: <LevelCreateForm />,
-                //   //   },
-                //   //   {
-                //   //     path: "edit",
-                //   //     element: <LevelUpdateForm />,
-                //   //   },
-                //   // ],
-                // },
               ],
             },
           ],
