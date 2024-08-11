@@ -1,3 +1,13 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+  "rewrites": [
+    {
+      "source": "/api/development/:path*",
+      "destination": "https://poison-marshes-backend-development.up.railway.app/:path*"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "https://poison-marshes-backend-production.up.railway.app/:path*"
+    },
+    { "source": "/(.*)", "destination": "/" }
+  ]
 }
