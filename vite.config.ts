@@ -22,8 +22,10 @@ export default defineConfig(({ mode }) => {
       },
     },
     define: {
-      __APP_ENV__: env.VITE_VERCEL_ENV,
-      __BASE_URL__: env.VITE_API_URL,
+      __APP_ENV__: JSON.stringify(env.VITE_VERCEL_ENV),
+      __BASE_URL__: JSON.stringify(env.VITE_API_URL),
+      __DEV_BASE_URL__: JSON.stringify(env.VITE_VERCEL_URL),
+      __PROD_BASE_URL__: JSON.stringify(env.VITE_VERCEL_PROJECT_PRODUCTION_URL),
     },
   };
 });
