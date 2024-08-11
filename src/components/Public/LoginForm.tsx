@@ -37,13 +37,13 @@ export default function LoginForm() {
         <input
           type="email"
           placeholder="Email"
-          className="text-stone input input-bordered border-yellow-600 bg-transparent"
+          className="text-stone input input-bordered w-full border-yellow-600 bg-transparent"
           name="email"
         />
         <input
           type="password"
           placeholder="Password"
-          className="text-stone input input-bordered border-yellow-600 bg-transparent"
+          className="text-stone input input-bordered w-full border-yellow-600 bg-transparent"
           name="password"
         />
         <button

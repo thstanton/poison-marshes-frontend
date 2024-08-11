@@ -13,7 +13,7 @@ export default function LogOutButton() {
       queryClient.invalidateQueries({ queryKey: ["user"] });
     },
     onSettled() {
-      navigate("/login");
+      navigate("/");
     },
   });
 
