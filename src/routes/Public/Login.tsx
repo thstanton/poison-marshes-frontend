@@ -1,14 +1,27 @@
-import LoginForm from "../../components/LoginForm";
+import { Link } from "react-router-dom";
+import Countdown from "../../components/Public/Countdown";
+import LoginForm from "../../components/Public/LoginForm";
 import StickyLabel from "../../components/UI/StickyLabel";
+import PoisonMarshesHeader from "../../components/Public/PoisonMarshesHeader";
 
 export default function Login() {
   return (
     <>
-      <h1 className="pb-2 text-center font-unica text-6xl font-bold text-stone-300/60 drop-shadow">
-        The Poison Marshes
-      </h1>
+      <PoisonMarshesHeader />
+      <Countdown />
       <StickyLabel>
         <LoginForm />
+        <div className="text-center font-special text-sm">
+          <p>
+            Don't have an account yet?{" "}
+            <Link to="/register" className="link">
+              Sign up
+            </Link>
+          </p>
+          <Link to="/about" className="link mt-3">
+            What is this?
+          </Link>
+        </div>
       </StickyLabel>
     </>
   );

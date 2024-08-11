@@ -1,5 +1,5 @@
-import NavBar from "../components/NavBar/NavBar";
-import bgPoster from "../assets/bg-poster.png";
+import NavBar from "../../components/NavBar/NavBar";
+import bgPoster from "../../assets/bg-poster.png";
 import { Outlet } from "react-router";
 
 export default function JournalLayout() {

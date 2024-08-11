@@ -1,8 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
-import { FormEvent, useRef } from "react";
+import { useRef, FormEvent } from "react";
 import { z } from "zod";
-import { api } from "../lib/axiosConfig";
+import { api } from "../../lib/axiosConfig";
 
 export default function SignUpForm() {
   const formRef = useRef<HTMLFormElement>(null);

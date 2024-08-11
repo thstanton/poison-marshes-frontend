@@ -1,11 +1,20 @@
 import LevelDisplay from "../../components/Journal/LevelDisplay";
 import LoadingIndicator from "../../components/UI/LoadingIndicator";
-import { useLevels } from "../../hooks/useLevel";
 import { useState } from "react";
+import { usePrevLevels } from "../../hooks/usePrevLevels";
+import StickyLabel from "../../components/UI/StickyLabel";
+import { useNavigate } from "react-router";
 
 export default function LevelPage() {
   const [index, setIndex] = useState(0);
-  const { data: levels, isLoading, error } = useLevels();
+  const navigate = useNavigate();
+
+  const {
+    data: completedLevels,
+    isLoading,
+    error,
+    isSuccess,
+  } = usePrevLevels();
 
   if (isLoading) {
     return <LoadingIndicator />;
@@ -15,28 +24,34 @@ export default function LevelPage() {
     return <div>Error: {error.message}</div>;
   }
 
-  if (levels) {
+  if (isSuccess && completedLevels.length <= 0) {
+    return <StickyLabel>Your journey has just begun</StickyLabel>;
+  }
+
+  if (isSuccess) {
     return (
       <>
-        <div className="my-3 flex justify-between font-rock">
-          {index > 0 && (
-            <button
-              className="btn btn-outline"
-              onClick={() => setIndex(index - 1)}
-            >
-              Prev
-            </button>
-          )}
-          {index < levels?.length - 1 && (
-            <button
-              className="btn btn-outline"
-              onClick={() => setIndex(index + 1)}
-            >
-              Next
-            </button>
-          )}
+        <div className="my-3 flex justify-between text-left">
+          <div className="w-full">
+            {index < completedLevels?.length - 1 && (
+              <button className="btn" onClick={() => setIndex(index + 1)}>
+                Prev
+              </button>
+            )}
+          </div>
+          <div className="w-full text-right">
+            {index > 0 ? (
+              <button className="btn" onClick={() => setIndex(index - 1)}>
+                Next
+              </button>
+            ) : (
+              <button className="btn" onClick={() => navigate("/journal")}>
+                Next
+              </button>
+            )}
+          </div>
         </div>
-        <LevelDisplay level={levels[index]} />
+        <LevelDisplay level={completedLevels[index]} complete={true} />
       </>
     );
   }

@@ -24,6 +24,6 @@ export default {
   },
   plugins: [daisyui],
   daisyui: {
-    themes: ["dark"],
+    themes: ["cyberpunk"],
   },
 };

@@ -1,8 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
-import { LoginDetails } from "../types/Account";
+import { LoginDetails } from "../../types/Account";
 import { useNavigate } from "react-router-dom";
-import { api } from "../lib/axiosConfig";
-import { useUser } from "../hooks/useUser";
+import { api } from "../../lib/axiosConfig";
+import { useUser } from "../../hooks/useUser";
 
 export default function LoginForm() {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { api } from "../../lib/axiosConfig";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { z } from "zod";
 import { levelSchema } from "../../schemas/levelSchema";
 import { emailSchema } from "../../schemas/emailSchema";
@@ -10,9 +10,14 @@ type EmailCreate = z.infer<typeof emailSchema>;
 
 export default function LevelCreateForm() {
   const [message, setMessage] = useState<string[]>([]);
+  const formRef = useRef<HTMLFormElement>(null);
+
   const mutation = useMutation({
     mutationFn: (level: LevelCreate) => {
       return api.post("/levels", { level });
+    },
+    onMutate() {
+      setMessage([]);
     },
     onError(error) {
       setMessage((prevMessages) => [...prevMessages, error.message]);
@@ -22,6 +27,7 @@ export default function LevelCreateForm() {
         ...prevMessages,
         "Level created successfully",
       ]);
+      formRef.current?.reset();
     },
   });
 
@@ -39,10 +45,10 @@ export default function LevelCreateForm() {
     };
 
     const email: EmailCreate = {
-      from: formData.get("from") as string,
-      subject: formData.get("subject") as string,
-      text: formData.get("text") as string,
-      html: formData.get("html") as string,
+      from: formData.get("emailFrom") as string,
+      subject: formData.get("emailSubject") as string,
+      text: formData.get("emailBodyText") as string,
+      html: formData.get("emailBodyHtml") as string,
     };
     if (email) level.email = email;
 
@@ -60,12 +66,21 @@ export default function LevelCreateForm() {
       levelSchema.parse(level);
       mutation.mutate(level);
     } catch (error) {
-      console.error(error);
+      if (error instanceof z.ZodError) {
+        setMessage((prevMessages) => [
+          ...prevMessages,
+          ...error.issues.map((issue) => issue.message),
+        ]);
+      }
     }
   };
 
   return (
-    <form className="flex flex-col gap-2 py-6" onSubmit={onSubmit}>
+    <form
+      className="flex flex-col gap-2 py-6"
+      onSubmit={onSubmit}
+      ref={formRef}
+    >
       <div className="flex justify-between gap-4">
         <input
           type="number"

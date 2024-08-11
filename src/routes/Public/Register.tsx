@@ -1,12 +1,11 @@
-import RegisterAccountForm from "../../components/RegisterAccountForm";
+import PoisonMarshesHeader from "../../components/Public/PoisonMarshesHeader";
+import RegisterAccountForm from "../../components/Public/RegisterAccountForm";
 import StickyLabel from "../../components/UI/StickyLabel";
 
 export default function Register() {
   return (
     <>
-      <h1 className="pb-2 text-center font-unica text-6xl font-bold text-stone-300/60 drop-shadow">
-        The Poison Marshes
-      </h1>
+      <PoisonMarshesHeader />
       <StickyLabel>
         <RegisterAccountForm />
       </StickyLabel>

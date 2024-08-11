@@ -3,9 +3,13 @@ import { Link } from "react-router-dom";
 
 interface LevelDisplayProps {
   level: Level;
+  complete?: boolean;
 }
 
-export default function LevelDisplay({ level }: LevelDisplayProps) {
+export default function LevelDisplay({
+  level,
+  complete = false,
+}: LevelDisplayProps) {
   return (
     <>
       <div className="rounded-lg border-2 border-solid border-stone-700 drop-shadow">
@@ -26,12 +30,12 @@ export default function LevelDisplay({ level }: LevelDisplayProps) {
       </div>
       <div className="mt-4 rounded-lg border-2 border-solid border-stone-700 text-slate-900 drop-shadow">
         <div className="rounded-t-lg bg-yellow-300 p-4 text-center font-rock">
-          <h2>Task</h2>
+          <h2>Task{complete ? <span> - Complete ✅</span> : ""}</h2>
         </div>
         <div className="min-h-32 rounded-b-lg bg-yellow-200 p-4 font-special">
           <p>
             {level.task}
-            <span className="animate-blink font-bold">_</span>
+            {complete ? "" : <span className="animate-blink font-bold">_</span>}
           </p>
         </div>
       </div>

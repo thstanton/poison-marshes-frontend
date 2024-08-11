@@ -9,12 +9,12 @@ export default function Admin() {
         <li className="btn" onClick={() => navigate("/admin/levels")}>
           Levels
         </li>
-        <li className="btn" onClick={() => navigate("/admin/emails")}>
+        {/* <li className="btn" onClick={() => navigate("/admin/emails")}>
           Emails
         </li>
         <li className="btn" onClick={() => navigate("/admin/acts")}>
           Acts
-        </li>
+        </li> */}
         <li className="btn" onClick={() => navigate("/admin/games")}>
           Games
         </li>

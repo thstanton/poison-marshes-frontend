@@ -1,9 +1,9 @@
-import { FormEvent, useRef, useState } from "react";
-import { AccountCreateDto } from "../types/Account";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
-import { api } from "../lib/axiosConfig";
-import { registerSchema } from "../schemas/registerAccountForm";
+import { useState, useRef, FormEvent } from "react";
+import { api } from "../../lib/axiosConfig";
+import { registerSchema } from "../../schemas/registerAccountForm";
+import { AccountCreateDto } from "../../types/Account";
 
 interface ValidationErrors {
   email: string[];

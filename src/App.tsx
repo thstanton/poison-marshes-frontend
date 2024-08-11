@@ -1,23 +1,26 @@
 import { RouterProvider } from "react-router";
 import { createBrowserRouter } from "react-router-dom";
-import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedRoute from "./components/Auth/ProtectedRoute";
 import ErrorPage from "./error-page";
-import JournalLayout from "./layouts/JournalLayout";
+import JournalLayout from "./layouts/Journal/JournalLayout";
 import SignUpBackground from "./layouts/SignUpBackground";
 import Journal from "./routes/Journal/Journal";
-import LandingPage from "./routes/Public/LandingPage";
+// import LandingPage from "./routes/Public/LandingPage";
 import LevelPage from "./routes/Journal/LevelPage";
 import Login from "./routes/Public/Login";
 import Register from "./routes/Public/Register";
-import SignedUp from "./routes/Public/SignedUp";
+// import SignedUp from "./routes/Public/SignedUp";
 import VideoPage from "./routes/Journal/VideoPage";
 import WellfieldHome from "./routes/Static/WellfieldHome";
 import { AuthProvider } from "./contexts/useAuth";
-import Admin from "./layouts/Admin";
+import Admin from "./layouts/Journal/Admin/Admin";
 import Games from "./routes/Admin/Games";
 import LevelCreateForm from "./components/Admin/LevelCreateForm";
-import LevelUpdateForm from "./components/Admin/LevelUpdateForm";
-import CreateEdit from "./layouts/CreateEdit";
+import CreateEdit from "./layouts/Journal/Admin/CreateEdit";
+import LevelUpSuccess from "./components/Journal/LevelUpSuccess";
+import LevelUpFail from "./components/Journal/LevelUpFail";
+import About from "./routes/Public/About";
+// import LevelUpdatePage from "./components/Admin/LevelUpdatePage";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -27,19 +30,23 @@ export default function App() {
       children: [
         {
           path: "/",
-          element: <LandingPage />,
+          element: <Login />,
         },
-        {
-          path: "/signed-up",
-          element: <SignedUp />,
-        },
+        // {
+        //   path: "/",
+        //   element: <LandingPage />,
+        // },
+        // {
+        //   path: "/signed-up",
+        //   element: <SignedUp />,
+        // },
         {
           path: "/register",
           element: <Register />,
         },
         {
-          path: "/login",
-          element: <Login />,
+          path: "/about",
+          element: <About />,
         },
       ],
     },
@@ -52,8 +59,11 @@ export default function App() {
           children: [
             {
               path: "/journal",
-              element: <Journal />,
               children: [
+                {
+                  index: true,
+                  element: <Journal />,
+                },
                 {
                   path: "levels",
                   element: <LevelPage />,
@@ -61,6 +71,14 @@ export default function App() {
                 {
                   path: "video",
                   element: <VideoPage />,
+                },
+                {
+                  path: "level-up-success",
+                  element: <LevelUpSuccess />,
+                },
+                {
+                  path: "level-up-fail",
+                  element: <LevelUpFail />,
                 },
               ],
             },
@@ -76,44 +94,44 @@ export default function App() {
                       path: "create",
                       element: <LevelCreateForm />,
                     },
-                    {
-                      path: "edit",
-                      element: <LevelUpdateForm />,
-                    },
+                    // {
+                    //   path: "edit",
+                    //   element: <LevelUpdatePage />,
+                    // },
                   ],
                 },
-                {
-                  path: "acts",
-                  element: <CreateEdit />,
-                  children: [
-                    {
-                      path: "create",
-                      element: <LevelCreateForm />,
-                    },
-                    {
-                      path: "edit",
-                      element: <LevelUpdateForm />,
-                    },
-                  ],
-                },
+                // {
+                //   path: "acts",
+                //   element: <CreateEdit />,
+                //   // children: [
+                //   //   {
+                //   //     path: "create",
+                //   //     element: <LevelCreateForm />,
+                //   //   },
+                //   //   {
+                //   //     path: "edit",
+                //   //     element: <LevelUpdatePage />,
+                //   //   },
+                //   // ],
+                // },
                 {
                   path: "games",
                   element: <Games />,
                 },
-                {
-                  path: "emails",
-                  element: <CreateEdit />,
-                  children: [
-                    {
-                      path: "create",
-                      element: <LevelCreateForm />,
-                    },
-                    {
-                      path: "edit",
-                      element: <LevelUpdateForm />,
-                    },
-                  ],
-                },
+                // {
+                //   path: "emails",
+                //   element: <CreateEdit />,
+                //   // children: [
+                //   //   {
+                //   //     path: "create",
+                //   //     element: <LevelCreateForm />,
+                //   //   },
+                //   //   {
+                //   //     path: "edit",
+                //   //     element: <LevelUpdateForm />,
+                //   //   },
+                //   // ],
+                // },
               ],
             },
           ],

@@ -4,22 +4,22 @@ import { Outlet } from "react-router";
 
 export default function SignUpBackground() {
   return (
-    <div className="h-dvh">
-      <div className="absolute -z-10 h-screen w-screen">
+    <div>
+      <div className="absolute -z-10 h-full w-full">
         <video
           autoPlay
           muted
           loop
-          className="h-full w-full object-cover"
+          className="h-full min-h-dvh w-full object-cover"
           poster={bgPoster}
         >
           <source src={bgVid} type="video/mp4" />
         </video>
       </div>
-      <div className="absolute -z-10 h-screen w-screen bg-gradient-to-b from-stone-800 via-stone-700/40 to-yellow-300/70"></div>
-      <div className="flex h-full w-full flex-col items-center justify-evenly p-4">
+      <div className="absolute -z-10 h-fit min-h-dvh w-screen bg-gradient-to-b from-stone-800 via-stone-700/40 to-yellow-300/70"></div>
+      <div className="flex h-auto min-h-dvh w-full flex-col items-center justify-between p-4">
         <Outlet />
-        <div className="absolute bottom-0 w-full py-4 text-center font-special text-neutral">
+        <div className="w-full py-4 text-center font-special text-neutral">
           <p>
             The Poison Marshes is part of{" "}
             <a href="https://alrewas-artsfest.co.uk" target="_blank">

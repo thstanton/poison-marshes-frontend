@@ -1,14 +1,13 @@
-import Countdown from "../../components/Countdown";
-import SignUpForm from "../../components/SignUpForm";
+import Countdown from "../../components/Public/Countdown";
+import PoisonMarshesHeader from "../../components/Public/PoisonMarshesHeader";
+import SignUpForm from "../../components/Public/SignUpForm";
 import StickyLabel from "../../components/UI/StickyLabel";
 
 export default function LandingPage() {
   return (
     <>
       <div>
-        <h1 className="pb-2 text-center font-unica text-6xl font-bold text-stone-300/60 drop-shadow">
-          The Poison Marshes
-        </h1>
+        <PoisonMarshesHeader />
         <Countdown />
       </div>
       <StickyLabel>
