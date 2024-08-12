@@ -10,23 +10,26 @@ export default function LevelUpFail() {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate("/journal");
-    }, 10000);
+    }, 7000);
     return () => clearTimeout(timer);
   }, [navigate]);
 
   return (
-    <div className="mt-8">
+    <div className="mt-8 flex items-center justify-center">
       <StickyLabel>
-        <h1>Incorrect Solution</h1>
+        <h1 className="text-error">Incorrect Solution</h1>
         <p className="font-special">This door remains closed - for now...</p>
         <Lottie className="w-60" animationData={lockedAnimation} loop={false} />
-        <p className="font-sans text-lg font-normal text-red-500">
-          Need a hint? Click the{" "}
-          <span className="btn btn-circle border-none bg-red-500 font-rock text-white drop-shadow-xl">
-            ?
-          </span>{" "}
-          button in your journal.
-        </p>
+        <div className="font-mono text-sm font-normal text-error-content md:text-base">
+          <p className="mb-2 font-bold text-error">Need a hint? </p>
+          <p>
+            Click the{" "}
+            <span className="btn btn-circle btn-sm border-none bg-red-500 font-rock text-white drop-shadow-xl md:btn-md">
+              ?
+            </span>{" "}
+            button in your journal.
+          </p>
+        </div>
       </StickyLabel>
     </div>
   );

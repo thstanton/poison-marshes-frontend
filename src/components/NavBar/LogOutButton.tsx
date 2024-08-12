@@ -20,7 +20,7 @@ export default function LogOutButton() {
 
   return (
     <button
-      className="btn btn-outline font-rock"
+      className="btn btn-outline btn-sm border-warning font-rock text-xs text-warning md:btn-md md:text-base"
       onClick={() => logout.mutate()}
     >
       Logout
