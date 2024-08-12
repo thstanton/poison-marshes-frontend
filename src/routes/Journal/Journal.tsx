@@ -12,22 +12,20 @@ export default function Journal() {
 
   return (
     <>
-      <div className="mx-auto max-w-[800px] p-2">
-        {isSuccess && prevLevels.length > 0 && (
-          <Link to="/journal/levels" className="btn btn-sm mb-3">
-            {"<"} Prev
-          </Link>
-        )}
-        {game?.level.act.inProgress ? (
-          <>
-            <LevelDisplay level={game?.level} />
-            {game?.level.solution && <SolutionEntry />}
-            <HintModal hints={game?.level.hints} />
-          </>
-        ) : (
-          <ActWaiting />
-        )}
-      </div>
+      {isSuccess && prevLevels.length > 0 && (
+        <Link to="/journal/levels" className="btn btn-sm mb-3">
+          {"<"} Prev
+        </Link>
+      )}
+      {game?.level.act.inProgress ? (
+        <>
+          <LevelDisplay level={game?.level} />
+          {game?.level.solution && <SolutionEntry />}
+          <HintModal hints={game?.level.hints} />
+        </>
+      ) : (
+        <ActWaiting />
+      )}
     </>
   );
 }

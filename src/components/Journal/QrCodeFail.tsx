@@ -3,6 +3,7 @@ import StickyLabel from "../UI/StickyLabel";
 import lockedAnimation from "../../assets/lotties/locked-animation.json";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
+import HintPrompt from "./HintPrompt";
 
 export default function QrCodeFail() {
   const navigate = useNavigate();
@@ -15,21 +16,15 @@ export default function QrCodeFail() {
   }, [navigate]);
 
   return (
-    <div className="m-8">
+    <div className="mt-8 flex items-center justify-center">
       <StickyLabel>
-        <h1>We weren't expecting you...</h1>
+        <h1 className="text-info">We weren't expecting you...</h1>
         <p className="font-special">
           Your quest has not taken you here, yet. Check your journal for
           instructions.
         </p>
         <Lottie className="w-60" animationData={lockedAnimation} loop={false} />
-        <p className="font-sans text-lg font-normal text-red-500">
-          Need a hint? Click the{" "}
-          <span className="btn btn-circle border-none bg-red-500 font-rock text-white drop-shadow-xl">
-            ?
-          </span>{" "}
-          button in your journal.
-        </p>
+        <HintPrompt />
       </StickyLabel>
     </div>
   );

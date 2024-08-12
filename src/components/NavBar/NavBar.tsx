@@ -11,20 +11,22 @@ export default function NavBar() {
       </div>
       <div className="navbar-end gap-4">
         <div className="flex flex-row items-center gap-2">
-          <h3>
-            <Link to="/journal" className="hover:font-bold">
-              {user?.name}'s Journal
-            </Link>
-          </h3>
+          <Link to="/journal" className="text-xs hover:font-bold md:text-base">
+            {user?.name}'s Journal
+          </Link>
+
+          {user?.isAdmin && (
+            <>
+              |{" "}
+              <Link
+                to="/admin"
+                className="text-xs hover:font-bold md:text-base"
+              >
+                Admin Tools
+              </Link>
+            </>
+          )}
         </div>
-        {user?.isAdmin && (
-          <>
-            |{" "}
-            <Link to="/admin" className="hover:font-bold">
-              Admin Tools
-            </Link>
-          </>
-        )}
         <LogOutButton />
       </div>
     </div>

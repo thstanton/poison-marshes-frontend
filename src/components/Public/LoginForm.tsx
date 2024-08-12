@@ -50,20 +50,20 @@ export default function LoginForm({ qrCode }: LoginFormProps) {
         <input
           type="email"
           placeholder="Email"
-          className="text-stone input input-bordered border-yellow-600 bg-transparent"
+          className="input input-bordered bg-transparent"
           name="email"
         />
         <input
           type="password"
           placeholder="Password"
-          className="text-stone input input-bordered border-yellow-600 bg-transparent"
+          className="input input-bordered bg-transparent"
           name="password"
         />
         <button type="submit" className="btn">
           Log In
         </button>
         {error && (
-          <p className="text-left font-mono text-sm font-normal text-red-500">
+          <p className="text-center font-mono text-sm font-normal text-red-500">
             Error: {error}
           </p>
         )}
