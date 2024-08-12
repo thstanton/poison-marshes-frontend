@@ -31,19 +31,19 @@ export default function LoginForm() {
     <>
       <h1>Log In</h1>
       <form
-        className="flex flex-col gap-2 font-special"
+        className="flex w-full flex-col gap-2 font-special"
         onSubmit={handleSubmit}
       >
         <input
           type="email"
           placeholder="Email"
-          className="text-stone input input-bordered w-full border-yellow-600 bg-transparent"
+          className="text-stone input input-bordered border-yellow-600 bg-transparent"
           name="email"
         />
         <input
           type="password"
           placeholder="Password"
-          className="text-stone input input-bordered w-full border-yellow-600 bg-transparent"
+          className="text-stone input input-bordered border-yellow-600 bg-transparent"
           name="password"
         />
         <button

@@ -34,19 +34,28 @@ export default function LevelPage() {
         <div className="my-3 flex justify-between text-left">
           <div className="w-full">
             {index < completedLevels?.length - 1 && (
-              <button className="btn" onClick={() => setIndex(index + 1)}>
-                Prev
+              <button
+                className="btn btn-sm"
+                onClick={() => setIndex(index + 1)}
+              >
+                {"<"} Prev
               </button>
             )}
           </div>
           <div className="w-full text-right">
             {index > 0 ? (
-              <button className="btn" onClick={() => setIndex(index - 1)}>
-                Next
+              <button
+                className="btn btn-sm"
+                onClick={() => setIndex(index - 1)}
+              >
+                Next {">"}
               </button>
             ) : (
-              <button className="btn" onClick={() => navigate("/journal")}>
-                Next
+              <button
+                className="btn btn-sm"
+                onClick={() => navigate("/journal")}
+              >
+                Next {">"}
               </button>
             )}
           </div>

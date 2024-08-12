@@ -14,8 +14,8 @@ export default function Journal() {
     <>
       <div className="mx-auto max-w-[800px] p-2">
         {isSuccess && prevLevels.length > 0 && (
-          <Link to="/journal/levels" className="btn mb-3">
-            See previous
+          <Link to="/journal/levels" className="btn btn-sm mb-3">
+            {"<"} Prev
           </Link>
         )}
         {game?.level.act.inProgress ? (
