@@ -10,7 +10,8 @@ export default function LogOutButton() {
       return api.post("/auth/logout");
     },
     onSuccess() {
-      queryClient.invalidateQueries({ queryKey: ["user"] });
+      queryClient.invalidateQueries();
+      queryClient.resetQueries();
     },
     onSettled() {
       navigate("/");
