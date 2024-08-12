@@ -7,7 +7,6 @@ import { refreshToken } from "../lib/tokenManager";
 const fetchUser = async (): Promise<Account> => {
   try {
     const result = await api.get<Account>("/auth/is-logged-in");
-    console.log(result);
     return result.data;
   } catch (error) {
     if (error instanceof AxiosError) {

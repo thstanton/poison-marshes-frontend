@@ -20,6 +20,8 @@ import LevelUpFail from "./components/Journal/LevelUpFail";
 import About from "./routes/Public/About";
 import LandingPage from "./routes/Public/LandingPage";
 import SignedUp from "./routes/Public/SignedUp";
+import QrCodes from "./routes/Public/QrCodes";
+import QrCodeFail from "./components/Journal/QrCodeFail";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -79,6 +81,10 @@ export default function App() {
                   path: "level-up-fail",
                   element: <LevelUpFail />,
                 },
+                {
+                  path: "qr-code-fail",
+                  element: <QrCodeFail />,
+                },
               ],
             },
             {
@@ -104,6 +110,11 @@ export default function App() {
           ],
         },
       ],
+    },
+    {
+      path: "/codes/:levelId",
+      element: <QrCodes />,
+      errorElement: <ErrorPage />,
     },
     {
       path: "/wellfield",

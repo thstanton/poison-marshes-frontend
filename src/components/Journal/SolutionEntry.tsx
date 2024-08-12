@@ -1,34 +1,9 @@
-import { useMutation } from "@tanstack/react-query";
-import { api } from "../../lib/axiosConfig";
 import { useState } from "react";
-import { useNavigate } from "react-router";
-import { AxiosError } from "axios";
-import { useGame } from "../../hooks/useGame";
-import { usePrevLevels } from "../../hooks/usePrevLevels";
+import { useLevelUpMutation } from "../../hooks/useLevelUpMutation";
 
 export default function SolutionEntry() {
   const [solution, setSolution] = useState<string>("");
-  const [error, setError] = useState<string>("");
-  const { refetch: refetchGame } = useGame();
-  const { refetch: refetchLevels } = usePrevLevels();
-  const navigate = useNavigate();
-
-  const mutateGame = useMutation({
-    mutationFn: async (solution: string) =>
-      api.put("/games/advance-level", { solution }),
-    onSuccess: () => {
-      refetchGame();
-      refetchLevels();
-      navigate("/journal/level-up-success");
-    },
-    onError(error) {
-      if (error instanceof AxiosError && error.response?.status === 422) {
-        navigate("/journal/level-up-fail");
-      } else {
-        setError(error.message);
-      }
-    },
-  });
+  const mutateGame = useLevelUpMutation();
 
   const handleSubmit = () => {
     const cleanSolution = solution.trim().toLowerCase();
@@ -54,7 +29,6 @@ export default function SolutionEntry() {
           Submit{" "}
           {mutateGame.isPending && <span className="loading-spinner"></span>}
         </button>
-        {error && <p className="text-sm text-red-500">{error}</p>}
       </div>
     </div>
   );
