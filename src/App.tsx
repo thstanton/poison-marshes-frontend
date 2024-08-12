@@ -18,6 +18,7 @@ import CreateEdit from "./layouts/Journal/Admin/CreateEdit";
 import LevelUpSuccess from "./components/Journal/LevelUpSuccess";
 import LevelUpFail from "./components/Journal/LevelUpFail";
 import About from "./routes/Public/About";
+import LandingPage from "./routes/Public/LandingPage";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -27,6 +28,10 @@ export default function App() {
       children: [
         {
           path: "/",
+          element: <LandingPage />,
+        },
+        {
+          path: "/login",
           element: <Login />,
         },
         {
