@@ -1,17 +1,3 @@
 {
-  "rewrites": [
-    {
-      "source": "/api/local/:path*",
-      "destination": "http://localhost:3000/:path*"
-    },
-    {
-      "source": "/api/development/:path*",
-      "destination": "https://api.development.poison-marshes.alrewas-artsfest.co.uk/:path*"
-    },
-    {
-      "source": "/api/:path*",
-      "destination": "https://api.poison-marshes.alrewas-artsfest.co.uk/:path*"
-    },
-    { "source": "/(.*)", "destination": "/" }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
