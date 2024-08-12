@@ -17,14 +17,6 @@ export default function LandingPage() {
         </div>
         <SignUpForm />
       </StickyLabel>
-      <div className="absolute bottom-0 w-full py-4 text-center font-special text-neutral">
-        <p>
-          The Poison Marshes is part of{" "}
-          <a href="https://alrewas-artsfest.co.uk" target="_blank">
-            Alrewas Arts Festival 2024
-          </a>
-        </p>
-      </div>
     </>
   );
 }

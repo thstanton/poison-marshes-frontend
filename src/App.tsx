@@ -19,6 +19,7 @@ import LevelUpSuccess from "./components/Journal/LevelUpSuccess";
 import LevelUpFail from "./components/Journal/LevelUpFail";
 import About from "./routes/Public/About";
 import LandingPage from "./routes/Public/LandingPage";
+import SignedUp from "./routes/Public/SignedUp";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -29,6 +30,10 @@ export default function App() {
         {
           path: "/",
           element: <LandingPage />,
+        },
+        {
+          path: "/signed-up",
+          element: <SignedUp />,
         },
         {
           path: "/login",
