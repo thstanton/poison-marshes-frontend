@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import daisyui from "daisyui";
+import typography from "@tailwindcss/typography";
 
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -20,9 +21,15 @@ export default {
           to: { display: "none" },
         },
       },
+      backgroundImage: {
+        "journal-bg":
+          "url('https://res.cloudinary.com/drbmqrolz/image/upload/v1723557766/PM_bg_poster.png')",
+        "wf-hero-bg":
+          "url('https://res.cloudinary.com/drbmqrolz/image/upload/v1723557662/PM_WF_hero.jpg')",
+      },
     },
   },
-  plugins: [daisyui],
+  plugins: [typography, daisyui],
   daisyui: {
     themes: ["cyberpunk"],
   },

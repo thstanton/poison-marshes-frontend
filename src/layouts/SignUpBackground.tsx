@@ -1,8 +1,19 @@
-import bgVid from "../assets/bg-vid.mp4";
-import bgPoster from "../assets/bg-poster.png";
+// import bgVid from "../assets/bg-vid.mp4";
+// import bgPoster from "../assets/bg-poster.png";
 import { Outlet } from "react-router";
+import { cld } from "../main";
+import { fill } from "@cloudinary/url-gen/actions/resize";
 
 export default function SignUpBackground() {
+  const bgVid = cld
+    .video("PM_bg_vid")
+    .resize(fill().width(1024).height(768))
+    .toURL();
+  const bgPoster = cld
+    .image("PM_bg_poster")
+    .resize(fill().width(1024).height(768))
+    .toURL();
+
   return (
     <div>
       <div className="absolute -z-10 h-full w-full">

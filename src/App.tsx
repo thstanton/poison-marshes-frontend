@@ -22,6 +22,7 @@ import LandingPage from "./routes/Public/LandingPage";
 import SignedUp from "./routes/Public/SignedUp";
 import QrCodes from "./routes/Public/QrCodes";
 import QrCodeFail from "./components/Journal/QrCodeFail";
+import NewsArticle from "./routes/Static/NewsArticle";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -117,8 +118,17 @@ export default function App() {
       errorElement: <ErrorPage />,
     },
     {
-      path: "/wellfield",
-      element: <WellfieldHome />,
+      path: "/static",
+      children: [
+        {
+          path: "wellfield",
+          element: <WellfieldHome />,
+        },
+        {
+          path: "news",
+          element: <NewsArticle />,
+        },
+      ],
     },
   ]);
 
