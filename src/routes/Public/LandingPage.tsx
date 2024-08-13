@@ -6,7 +6,7 @@ import StickyLabel from "../../components/UI/StickyLabel";
 export default function LandingPage() {
   return (
     <>
-      <div>
+      <div className="flex flex-col justify-center">
         <PoisonMarshesHeader />
         <Countdown />
       </div>
