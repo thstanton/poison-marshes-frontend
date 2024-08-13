@@ -31,7 +31,7 @@ export default function LevelPage() {
   if (isSuccess) {
     return (
       <>
-        <div className="my-3 flex justify-between p-2 text-left">
+        <div className="my-3 flex justify-between text-left">
           <div className="w-full">
             {index < completedLevels?.length - 1 && (
               <button
