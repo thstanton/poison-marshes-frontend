@@ -117,11 +117,10 @@ export default function RegisterAccountForm() {
         onSubmit={handleSubmit}
       >
         <input
-          className="text-stone input input-bordered border-yellow-600 bg-transparent"
+          className="text-stone input input-bordered bg-transparent"
           type="text"
           placeholder="Email"
           name="email"
-          required
         />
         {validationErrors.email && (
           <ul className="font-sans text-sm font-light text-red-700">
@@ -131,11 +130,10 @@ export default function RegisterAccountForm() {
           </ul>
         )}
         <input
-          className="text-stone input input-bordered border-yellow-600 bg-transparent"
+          className="text-stone input input-bordered bg-transparent"
           type="text"
           placeholder="Name"
           name="name"
-          required
         />
         {validationErrors.name && (
           <ul className="font-sans text-sm font-light text-red-700">
@@ -145,18 +143,16 @@ export default function RegisterAccountForm() {
           </ul>
         )}
         <input
-          className="text-stone input input-bordered border-yellow-600 bg-transparent"
+          className="text-stone input input-bordered bg-transparent"
           type="password"
           placeholder="Password"
           name="password"
-          required
         />
         <input
-          className="text-stone input input-bordered border-yellow-600 bg-transparent"
+          className="text-stone input input-bordered bg-transparent"
           type="password"
           placeholder="Confirm Password"
           name="confirmPassword"
-          required
         />
         {validationErrors.password && (
           <ul className="font-sans text-sm font-light text-red-700">
@@ -175,10 +171,7 @@ export default function RegisterAccountForm() {
             </button>
           </span>
         ) : (
-          <button
-            className="btn border-0 bg-yellow-500 text-neutral drop-shadow-sm"
-            type="submit"
-          >
+          <button className="btn" type="submit">
             Submit{" "}
             {submit.isPending && (
               <span className="loading loading-spinner"></span>

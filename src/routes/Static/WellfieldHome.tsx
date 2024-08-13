@@ -1,9 +1,13 @@
 import WEWordmark from "../../assets/wellfield/WE_wordmark.svg";
 import WEStacked from "../../assets/wellfield/WE_stacked.svg";
 import WETag from "../../assets/wellfield/WE_tag.svg";
-import orwell from "../../assets/wellfield/orwell.jpg";
+import { cld } from "../../main";
+import { AdvancedImage } from "@cloudinary/react";
+import { fill } from "@cloudinary/url-gen/actions/resize";
 
 const WellfieldHome = () => {
+  const orwell = cld.image("PM_WF_orwell");
+  orwell.resize(fill().width(300).height(200));
   return (
     <div className="min-h-screen bg-gray-50 font-serif text-gray-800">
       {/* Header */}
@@ -32,7 +36,7 @@ const WellfieldHome = () => {
         {/* Hero Section */}
         <section
           id="home"
-          className="flex min-h-96 flex-col items-center justify-center gap-4 bg-[url('src/assets/wellfield/WE_hero.jpg')] bg-cover bg-center text-center"
+          className="bg-wf-hero-bg flex min-h-96 flex-col items-center justify-center gap-4 bg-cover bg-center text-center"
         >
           <img src={WEStacked} alt="Wellfield Energy" className="w-44" />
           <img
@@ -57,7 +61,7 @@ const WellfieldHome = () => {
             your best interests at heart.
           </p>
           <div className="mt-4 flex flex-col items-center gap-2 md:flex-row">
-            <img src={orwell} alt="Orwell Wellfield" className="w-64" />
+            <AdvancedImage cldImg={orwell} />
             <div>
               <p className="mb-2">
                 "What I love the most about Wellfield Energy is how we fuse
