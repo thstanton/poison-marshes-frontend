@@ -12,10 +12,18 @@ export default {
         special: ['"Special Elite"', "cursive"],
         unica: ['"Unica One"', "cursive"],
       },
+      animation: {
+        blink: "blink 1s steps(5, start) infinite",
+      },
+      keyframes: {
+        blink: {
+          to: { display: "none" },
+        },
+      },
     },
   },
   plugins: [daisyui],
   daisyui: {
-    themes: ["dark"],
+    themes: ["cyberpunk"],
   },
 };

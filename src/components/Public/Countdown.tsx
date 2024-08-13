@@ -9,7 +9,7 @@ export default function Countdown() {
   });
 
   useEffect(() => {
-    const targetDate = new Date(2024, 8, 17, 14, 0, 0);
+    const targetDate = new Date(2024, 7, 17, 14, 0, 0);
     const updateCountdown = () => {
       const currentTime = new Date();
       const difference = targetDate.getTime() - currentTime.getTime();
