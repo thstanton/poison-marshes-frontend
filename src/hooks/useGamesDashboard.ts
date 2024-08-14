@@ -1,13 +1,5 @@
-import { Level } from "./Level";
-
-export interface Game {
-  id: number;
-  accountId: number;
-  levelId: number;
-  createdAt: string;
-  updatedAt: string;
-  level: Level;
-}
+import { useQuery } from "@tanstack/react-query";
+import { api } from "../lib/axiosConfig";
 
 export interface GamesDashboardItem {
   id: number;
@@ -29,4 +21,17 @@ interface GamesDashboardAccountInfo {
 }
 interface GamesDashboardUserInfo {
   email: string;
+}
+
+const fetchGames = async () => {
+  try {
+    const result = await api.get<GamesDashboardItem[]>("/games");
+    return result.data;
+  } catch (error) {
+    throw new Error("Failed to fetch game data");
+  }
+};
+
+export default function useGamesDashboard() {
+  return useQuery({ queryKey: ["games"], queryFn: fetchGames });
 }

@@ -8,9 +8,9 @@ export default function CreateEdit() {
         <li className="btn btn-outline btn-sm">
           <Link to="create">Create</Link>
         </li>
-        <li className="btn btn-outline btn-sm">
+        {/* <li className="btn btn-outline btn-sm">
           <Link to="edit">Edit</Link>
-        </li>
+        </li> */}
       </ul>
       <Outlet />
     </div>

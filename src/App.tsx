@@ -23,6 +23,7 @@ import SignedUp from "./routes/Public/SignedUp";
 import QrCodes from "./routes/Public/QrCodes";
 import QrCodeFail from "./components/Journal/QrCodeFail";
 import NewsArticle from "./routes/Static/NewsArticle";
+import WormPuzzle from "./routes/Static/WormPuzzle";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -127,6 +128,10 @@ export default function App() {
         {
           path: "news",
           element: <NewsArticle />,
+        },
+        {
+          path: "symbols",
+          element: <WormPuzzle />,
         },
       ],
     },
