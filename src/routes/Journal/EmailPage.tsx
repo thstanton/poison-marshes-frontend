@@ -13,7 +13,7 @@ export default function EmailPage() {
 
   return (
     <div className="mx-4 flex h-full flex-col items-center justify-between gap-8">
-      <EmailDisplay />
+      {email && <EmailDisplay email={email} />}
       <button
         onClick={goBack}
         className="btn btn-outline font-rock text-stone-200"
