@@ -24,6 +24,7 @@ import QrCodes from "./routes/Public/QrCodes";
 import QrCodeFail from "./components/Journal/QrCodeFail";
 import NewsArticle from "./routes/Static/NewsArticle";
 import WormPuzzle from "./routes/Static/WormPuzzle";
+import EmailPage from "./routes/Journal/EmailPage";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -74,6 +75,10 @@ export default function App() {
                 {
                   path: "video",
                   element: <VideoPage />,
+                },
+                {
+                  path: "email",
+                  element: <EmailPage />,
                 },
                 {
                   path: "level-up-success",

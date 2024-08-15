@@ -26,6 +26,8 @@ export const useLevelUpMutation = (mode?: "qrCode" | "journal") => {
         } else {
           navigate("/journal/level-up-fail");
         }
+      } else {
+        throw new Error(`Failed to level up: ${error}`);
       }
     },
   });

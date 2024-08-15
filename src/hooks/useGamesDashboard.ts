@@ -1,27 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { api } from "../lib/axiosConfig";
-
-export interface GamesDashboardItem {
-  id: number;
-  accountId: number;
-  levelId: number;
-  createdAt: string;
-  updatedAt: string;
-  level: GamesDashboardLevelInfo;
-  account: GamesDashboardAccountInfo;
-}
-interface GamesDashboardLevelInfo {
-  sequence: number;
-  actSequence: number;
-  name: string;
-}
-interface GamesDashboardAccountInfo {
-  name: string;
-  user: GamesDashboardUserInfo;
-}
-interface GamesDashboardUserInfo {
-  email: string;
-}
+import { GamesDashboardItem } from "../types/Game";
 
 const fetchGames = async () => {
   try {
