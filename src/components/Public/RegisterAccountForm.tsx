@@ -3,7 +3,9 @@ import { AxiosError } from "axios";
 import { useState, useRef, FormEvent } from "react";
 import { api } from "../../lib/axiosConfig";
 import { registerSchema } from "../../schemas/registerAccountForm";
-import { AccountCreateDto } from "../../types/Account";
+import { Account, AccountCreateDto } from "../../types/Account";
+import { useAuth } from "../../contexts/useAuth";
+import { useNavigate } from "react-router";
 
 interface ValidationErrors {
   email: string[];
@@ -18,6 +20,7 @@ export default function RegisterAccountForm() {
     password: [],
   });
   const formRef = useRef<HTMLFormElement>(null);
+  const navigate = useNavigate();
 
   const validateForm = (account: AccountCreateDto, confirmPassword: string) => {
     const errors: ValidationErrors = {
@@ -53,9 +56,11 @@ export default function RegisterAccountForm() {
     return result;
   };
 
+  const { login } = useAuth();
+
   const submit = useMutation({
     mutationFn: (account: AccountCreateDto) => {
-      return api.post(
+      return api.post<AccountCreateDto, Account>(
         "/accounts/register",
         { account },
         { withCredentials: true },
@@ -97,7 +102,21 @@ export default function RegisterAccountForm() {
       return;
     }
 
-    submit.mutate(account);
+    submit.mutate(account, {
+      onSuccess: () => {
+        login(
+          {
+            email: account.email,
+            password: account.password,
+          },
+          {
+            onSuccess: () => {
+              navigate("/journal");
+            },
+          },
+        );
+      },
+    });
   };
 
   const handleReset = () => {
@@ -112,7 +131,7 @@ export default function RegisterAccountForm() {
     <>
       <h1>Create Your Account</h1>
       <form
-        className="flex flex-col gap-2 font-special"
+        className="flex w-full flex-col gap-2 font-special"
         ref={formRef}
         onSubmit={handleSubmit}
       >

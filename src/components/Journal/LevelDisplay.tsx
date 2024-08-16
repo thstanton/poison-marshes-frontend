@@ -19,7 +19,7 @@ export default function LevelDisplay({
           <h1>{level.name}</h1>
         </div>
         <div className="flex min-h-32 flex-col items-center justify-between rounded-b-lg bg-white p-4 font-special text-slate-900">
-          <p>{level.flavourText}</p>
+          <p className="prose">{level.flavourText}</p>
           <div>
             {level.videoId && (
               <Link
@@ -50,7 +50,7 @@ export default function LevelDisplay({
           <h2>Task{complete ? <span> - Complete ✅</span> : ""}</h2>
         </div>
         <div className="min-h-32 rounded-b-lg bg-yellow-200 p-4 font-special">
-          <p>
+          <p className="prose">
             {level.task}
             {complete ? "" : <span className="animate-blink font-bold">_</span>}
           </p>

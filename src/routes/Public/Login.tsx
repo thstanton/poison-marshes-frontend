@@ -17,7 +17,7 @@ export default function Login() {
       <Countdown />
       <StickyLabel>
         <LoginForm />
-        <div className="text-center font-special text-sm">
+        <div className="text-center font-special text-lg">
           <p>
             Don't have an account yet?{" "}
             <Link to="/register" className="link">

@@ -13,12 +13,9 @@ const queryClient = new QueryClient({
       retry(_, error) {
         if (error instanceof AxiosError) {
           if (error.response?.status === 401) {
-            console.log("401 error!");
             return false;
           }
-          console.log(error.response?.status);
         }
-        console.log(error);
         return false;
       },
     },
