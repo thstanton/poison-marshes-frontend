@@ -1,10 +1,11 @@
-import { useMutation } from "@tanstack/react-query";
+// import { useMutation } from "@tanstack/react-query";
 import { LoginDetails } from "../../types/Account";
 import { useNavigate } from "react-router-dom";
-import { api } from "../../lib/axiosConfig";
-import { useUser } from "../../hooks/useUser";
+// import { api } from "../../lib/axiosConfig";
+// import { useUser } from "../../hooks/useUser";
 import { useState } from "react";
 import { AxiosError } from "axios";
+import { useAuth } from "../../contexts/useAuth";
 
 interface LoginFormProps {
   qrCode?: boolean;
@@ -12,24 +13,26 @@ interface LoginFormProps {
 
 export default function LoginForm({ qrCode }: LoginFormProps) {
   const navigate = useNavigate();
-  const { refetch } = useUser();
+  // const { refetch } = useUser();
   const [error, setError] = useState<string>("");
 
-  const submit = useMutation({
-    mutationFn: (loginDetails: LoginDetails) => {
-      setError("");
-      return api.post("/auth/login", loginDetails);
-    },
-    onSuccess() {
-      refetch();
-      if (!qrCode) navigate("/journal");
-    },
-    onError(error) {
-      if (error instanceof AxiosError) {
-        setError(error.response?.data.message);
-      }
-    },
-  });
+  // const submit = useMutation({
+  //   mutationFn: (loginDetails: LoginDetails) => {
+  //     setError("");
+  //     return api.post("/auth/login", loginDetails);
+  //   },
+  //   onSuccess() {
+  //     refetch();
+  //     if (!qrCode) navigate("/journal");
+  //   },
+  //   onError(error) {
+  //     if (error instanceof AxiosError) {
+  //       setError(error.response?.data.message);
+  //     }
+  //   },
+  // });
+
+  const { login } = useAuth();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -38,7 +41,17 @@ export default function LoginForm({ qrCode }: LoginFormProps) {
       email: formData.get("email") as string,
       password: formData.get("password") as string,
     };
-    submit.mutate(loginDetails);
+    // submit.mutate(loginDetails);
+    login(loginDetails, {
+      onSuccess: () => {
+        if (!qrCode) navigate("/journal");
+      },
+      onError: (error) => {
+        if (error instanceof AxiosError) {
+          setError(error.response?.data.message);
+        }
+      },
+    });
   };
   return (
     <>

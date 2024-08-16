@@ -27,10 +27,10 @@ export default function LevelUpSuccess() {
           You are one step closer toward saving the village
         </p>
         <Lottie className="w-60" animationData={unlockAnimation} loop={false} />
-        {game?.level.email && (
-          <p className="text-red-600">
+        {game?.level.email && game?.level.act.inProgress && (
+          <div className="flex items-center gap-2 font-special text-lg">
             <MdOutlineEmail /> Check your email
-          </p>
+          </div>
         )}
       </StickyLabel>
     </div>
