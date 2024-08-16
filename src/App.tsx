@@ -18,8 +18,6 @@ import CreateEdit from "./layouts/Journal/Admin/CreateEdit";
 import LevelUpSuccess from "./components/Journal/LevelUpSuccess";
 import LevelUpFail from "./components/Journal/LevelUpFail";
 import About from "./routes/Public/About";
-import LandingPage from "./routes/Public/LandingPage";
-import SignedUp from "./routes/Public/SignedUp";
 import QrCodes from "./routes/Public/QrCodes";
 import QrCodeFail from "./components/Journal/QrCodeFail";
 import NewsArticle from "./routes/Static/NewsArticle";
