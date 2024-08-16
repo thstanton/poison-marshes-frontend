@@ -18,11 +18,11 @@ import CreateEdit from "./layouts/Journal/Admin/CreateEdit";
 import LevelUpSuccess from "./components/Journal/LevelUpSuccess";
 import LevelUpFail from "./components/Journal/LevelUpFail";
 import About from "./routes/Public/About";
-import LandingPage from "./routes/Public/LandingPage";
-import SignedUp from "./routes/Public/SignedUp";
 import QrCodes from "./routes/Public/QrCodes";
 import QrCodeFail from "./components/Journal/QrCodeFail";
 import NewsArticle from "./routes/Static/NewsArticle";
+import WormPuzzle from "./routes/Static/WormPuzzle";
+import EmailPage from "./routes/Journal/EmailPage";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -30,16 +30,16 @@ export default function App() {
       element: <SignUpBackground />,
       errorElement: <ErrorPage />,
       children: [
+        // {
+        //   path: "/",
+        //   element: <LandingPage />,
+        // },
+        // {
+        //   path: "/signed-up",
+        //   element: <SignedUp />,
+        // },
         {
           path: "/",
-          element: <LandingPage />,
-        },
-        {
-          path: "/signed-up",
-          element: <SignedUp />,
-        },
-        {
-          path: "/login",
           element: <Login />,
         },
         {
@@ -73,6 +73,10 @@ export default function App() {
                 {
                   path: "video",
                   element: <VideoPage />,
+                },
+                {
+                  path: "email",
+                  element: <EmailPage />,
                 },
                 {
                   path: "level-up-success",
@@ -127,6 +131,10 @@ export default function App() {
         {
           path: "news",
           element: <NewsArticle />,
+        },
+        {
+          path: "symbols",
+          element: <WormPuzzle />,
         },
       ],
     },

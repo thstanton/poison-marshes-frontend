@@ -26,6 +26,8 @@ export default {
           "url('https://res.cloudinary.com/drbmqrolz/image/upload/v1723557766/PM_bg_poster.png')",
         "wf-hero-bg":
           "url('https://res.cloudinary.com/drbmqrolz/image/upload/v1723557662/PM_WF_hero.jpg')",
+        "worm-puzzle-bg":
+          "url('https://res.cloudinary.com/drbmqrolz/image/upload/c_thumb,w_200,g_face/v1723565107/PM_cork_bg.jpg')",
       },
     },
   },

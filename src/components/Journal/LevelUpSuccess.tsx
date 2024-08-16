@@ -4,9 +4,12 @@ import unlockAnimation from "../../assets/lotties/unlock-animation.json";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../contexts/useAuth";
+import { useGame } from "../../hooks/useGame";
+import { MdOutlineEmail } from "react-icons/md";
 
 export default function LevelUpSuccess() {
   const { user } = useAuth();
+  const { data: game } = useGame();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,6 +27,11 @@ export default function LevelUpSuccess() {
           You are one step closer toward saving the village
         </p>
         <Lottie className="w-60" animationData={unlockAnimation} loop={false} />
+        {game?.level.email && (
+          <p className="text-red-600">
+            <MdOutlineEmail /> Check your email
+          </p>
+        )}
       </StickyLabel>
     </div>
   );

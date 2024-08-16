@@ -10,6 +10,7 @@ export interface Level {
   solution?: string;
   hints: string[];
   videoId?: string;
+  linkUrl?: string;
   createdAt: string;
   updatedAt: string;
   actSequence: number;

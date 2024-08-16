@@ -1,3 +1,5 @@
+import AllGamesDashboard from "../../components/Admin/AllGamesDashboard";
+
 export default function Games() {
-  return <div>Games</div>;
+  return <AllGamesDashboard />;
 }

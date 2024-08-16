@@ -1,10 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Countdown from "../../components/Public/Countdown";
 import LoginForm from "../../components/Public/LoginForm";
 import StickyLabel from "../../components/UI/StickyLabel";
 import PoisonMarshesHeader from "../../components/Public/PoisonMarshesHeader";
+import { useAuth } from "../../contexts/useAuth";
 
 export default function Login() {
+  const { isSuccess } = useAuth();
+  const navigate = useNavigate();
+
+  if (isSuccess) navigate("/journal");
+
   return (
     <>
       <PoisonMarshesHeader />

@@ -1,5 +1,7 @@
+import { MdOutlineMail, MdOutlineOndemandVideo } from "react-icons/md";
 import { Level } from "../../types/Level";
 import { Link } from "react-router-dom";
+import { PiDetective } from "react-icons/pi";
 
 interface LevelDisplayProps {
   level: Level;
@@ -18,14 +20,29 @@ export default function LevelDisplay({
         </div>
         <div className="flex min-h-32 flex-col items-center justify-between rounded-b-lg bg-white p-4 font-special text-slate-900">
           <p>{level.flavourText}</p>
-          {level.videoId && (
-            <Link
-              to={`/journal/video?vidId=${level.videoId}&title=${level.name}`}
-              className="btn btn-outline"
-            >
-              Watch Video
-            </Link>
-          )}
+          <div>
+            {level.videoId && (
+              <Link
+                to={`/journal/video?vidId=${level.videoId}&title=${level.name}`}
+                className="btn btn-outline"
+              >
+                <MdOutlineOndemandVideo /> Watch Video
+              </Link>
+            )}
+            {level.linkUrl && (
+              <Link to={level.linkUrl} className="btn btn-outline">
+                <PiDetective /> View Evidence
+              </Link>
+            )}
+            {level.email && (
+              <Link
+                to={`/journal/email?from=${level.email.from}&subject=${level.email.subject}&html=${level.email.html}`}
+                className="btn btn-outline"
+              >
+                <MdOutlineMail /> Read Email
+              </Link>
+            )}
+          </div>
         </div>
       </div>
       <div className="mt-4 rounded-lg border-2 border-solid border-stone-700 text-slate-900 drop-shadow">

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { usePrevLevels } from "../../hooks/usePrevLevels";
 import StickyLabel from "../../components/UI/StickyLabel";
 import { useNavigate } from "react-router";
+import LevelNav from "../../components/Journal/LevelNav";
 
 export default function LevelPage() {
   const [index, setIndex] = useState(0);
@@ -31,35 +32,18 @@ export default function LevelPage() {
   if (isSuccess) {
     return (
       <>
-        <div className="my-3 flex justify-between text-left">
-          <div className="w-full">
-            {index < completedLevels?.length - 1 && (
-              <button
-                className="btn btn-sm"
-                onClick={() => setIndex(index + 1)}
-              >
-                {"<"} Prev
-              </button>
-            )}
-          </div>
-          <div className="w-full text-right">
-            {index > 0 ? (
-              <button
-                className="btn btn-sm"
-                onClick={() => setIndex(index - 1)}
-              >
-                Next {">"}
-              </button>
-            ) : (
-              <button
-                className="btn btn-sm"
-                onClick={() => navigate("/journal")}
-              >
-                Next {">"}
-              </button>
-            )}
-          </div>
-        </div>
+        <LevelNav
+          sequence={completedLevels[index].sequence}
+          actSequence={completedLevels[index].actSequence}
+          prevHandler={
+            index < completedLevels?.length - 1
+              ? () => setIndex(index + 1)
+              : undefined
+          }
+          nextHandler={
+            index > 0 ? () => setIndex(index - 1) : () => navigate("/journal")
+          }
+        />
         <LevelDisplay level={completedLevels[index]} complete={true} />
       </>
     );
