@@ -1,10 +1,11 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import EmailDisplay from "../../components/Journal/EmailDisplay";
-import { useEmail } from "../../hooks/useEmail";
 
 export default function EmailPage() {
-  const { emailId } = useParams();
-  const { data: email } = useEmail(Number(emailId));
+  const [searchParams] = useSearchParams();
+  const from = searchParams.get("from");
+  const subject = searchParams.get("subject");
+  const html = searchParams.get("html");
   const navigate = useNavigate();
 
   const goBack = () => {
@@ -13,7 +14,9 @@ export default function EmailPage() {
 
   return (
     <div className="mx-4 flex h-full flex-col items-center justify-between gap-8">
-      {email && <EmailDisplay email={email} />}
+      {from && subject && html && (
+        <EmailDisplay from={from} subject={subject} html={html} />
+      )}
       <button
         onClick={goBack}
         className="btn btn-outline font-rock text-stone-200"

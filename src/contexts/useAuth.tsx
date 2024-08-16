@@ -9,6 +9,7 @@ interface AuthProviderProps {
 interface AuthContextProps {
   user: Account | undefined;
   isLoading: boolean;
+  isSuccess: boolean;
   refetch: () => void;
 }
 
@@ -17,10 +18,10 @@ const AuthContext: Context<AuthContextProps | undefined> = createContext<
 >(undefined);
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const { data: user, isLoading, refetch } = useUser();
+  const { data: user, isLoading, isSuccess, refetch } = useUser();
 
   return (
-    <AuthContext.Provider value={{ user, isLoading, refetch }}>
+    <AuthContext.Provider value={{ user, isLoading, isSuccess, refetch }}>
       {children}
     </AuthContext.Provider>
   );

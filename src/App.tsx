@@ -32,16 +32,16 @@ export default function App() {
       element: <SignUpBackground />,
       errorElement: <ErrorPage />,
       children: [
+        // {
+        //   path: "/",
+        //   element: <LandingPage />,
+        // },
+        // {
+        //   path: "/signed-up",
+        //   element: <SignedUp />,
+        // },
         {
           path: "/",
-          element: <LandingPage />,
-        },
-        {
-          path: "/signed-up",
-          element: <SignedUp />,
-        },
-        {
-          path: "/login",
           element: <Login />,
         },
         {

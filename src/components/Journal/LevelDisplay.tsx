@@ -36,7 +36,7 @@ export default function LevelDisplay({
             )}
             {level.email && (
               <Link
-                to={`/journal/email?emailId=${level.email.id}`}
+                to={`/journal/email?from=${level.email.from}&subject=${level.email.subject}&html=${level.email.html}`}
                 className="btn btn-outline"
               >
                 <MdOutlineMail /> Read Email
