@@ -35,7 +35,7 @@ const Polaroid = ({
     <div
       className={`relative m-2 w-full min-w-20 max-w-80 rotate-2 bg-white p-6 drop-shadow-xl md:w-1/2`}
     >
-      <AdvancedImage cldImg={image} className="object-cover drop-shadow" />
+      <AdvancedImage cldImg={image} className="drop-shadow" />
       <p className="-rotate-2 pt-2 text-center font-rock">{caption}</p>
     </div>
   );
