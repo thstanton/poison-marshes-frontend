@@ -26,11 +26,11 @@ export default function Journal() {
         />
       )}
       {game?.level.act.inProgress ? (
-        <>
+        <div className="pb-20">
           <LevelDisplay level={game?.level} />
           {game?.level.solution && <SolutionEntry />}
           <HintModal hints={game?.level.hints} />
-        </>
+        </div>
       ) : (
         <ActWaiting />
       )}
