@@ -1,4 +1,5 @@
 import DOMPurify from "dompurify";
+import { useAuth } from "../../contexts/useAuth";
 
 interface EmailDisplayProps {
   from: string;
@@ -12,6 +13,7 @@ export default function EmailDisplay({
   html,
 }: EmailDisplayProps) {
   const sanitisedHtml = DOMPurify.sanitize(html);
+  const { user } = useAuth();
 
   return (
     <div className="w-full bg-white p-8 drop-shadow-lg">
@@ -25,7 +27,7 @@ export default function EmailDisplay({
           </div>
         </div>
         <div className="prose">
-          <p>Dear Tim,</p>
+          <p>Dear {user?.name},</p>
           {html && <div dangerouslySetInnerHTML={{ __html: sanitisedHtml }} />}
         </div>
       </div>
