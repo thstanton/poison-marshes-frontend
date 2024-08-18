@@ -20,7 +20,7 @@ export default function LevelDisplay({
         </div>
         <div className="flex min-h-32 flex-col items-center justify-between rounded-b-lg bg-white p-4 font-special text-slate-900">
           <p className="prose">{level.flavourText}</p>
-          <div>
+          <div className="my-3 flex gap-2">
             {level.videoId && (
               <Link
                 to={`/journal/video?vidId=${level.videoId}&title=${level.name}`}
@@ -30,7 +30,7 @@ export default function LevelDisplay({
               </Link>
             )}
             {level.linkUrl && (
-              <Link to={level.linkUrl} className="btn btn-outline">
+              <Link to={`/static/${level.linkUrl}`} className="btn btn-outline">
                 <PiDetective /> View Evidence
               </Link>
             )}
