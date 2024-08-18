@@ -23,7 +23,6 @@ import QrCodeFail from "./components/Journal/QrCodeFail";
 import NewsArticle from "./routes/Static/NewsArticle";
 import WormPuzzle from "./routes/Static/WormPuzzle";
 import EmailPage from "./routes/Journal/EmailPage";
-import WormForm from "./routes/Static/WormForm";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -136,10 +135,6 @@ export default function App() {
         {
           path: "lzzc05oej0",
           element: <WormPuzzle />,
-        },
-        {
-          path: "lzzc39pwn9",
-          element: <WormForm />,
         },
       ],
     },
