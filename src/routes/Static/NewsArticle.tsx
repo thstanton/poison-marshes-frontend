@@ -31,7 +31,7 @@ const NewsArticle = () => {
           </p>
           <div className="flex w-full justify-center">
             <YouTube
-              videoId="GtB1__4QTcc"
+              videoId="j5cY4CAa2cc"
               className="mx-auto min-w-20 max-w-full md:min-w-80"
             />
           </div>
