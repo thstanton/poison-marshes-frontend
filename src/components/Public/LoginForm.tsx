@@ -13,24 +13,7 @@ interface LoginFormProps {
 
 export default function LoginForm({ qrCode }: LoginFormProps) {
   const navigate = useNavigate();
-  // const { refetch } = useUser();
   const [error, setError] = useState<string>("");
-
-  // const submit = useMutation({
-  //   mutationFn: (loginDetails: LoginDetails) => {
-  //     setError("");
-  //     return api.post("/auth/login", loginDetails);
-  //   },
-  //   onSuccess() {
-  //     refetch();
-  //     if (!qrCode) navigate("/journal");
-  //   },
-  //   onError(error) {
-  //     if (error instanceof AxiosError) {
-  //       setError(error.response?.data.message);
-  //     }
-  //   },
-  // });
 
   const { login } = useAuth();
 
@@ -41,7 +24,7 @@ export default function LoginForm({ qrCode }: LoginFormProps) {
       email: formData.get("email") as string,
       password: formData.get("password") as string,
     };
-    // submit.mutate(loginDetails);
+
     login(loginDetails, {
       onSuccess: () => {
         if (!qrCode) navigate("/journal");

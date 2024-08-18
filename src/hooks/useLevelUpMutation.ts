@@ -20,7 +20,10 @@ export const useLevelUpMutation = (mode?: "qrCode" | "journal") => {
     },
     onError(error) {
       // TODO: handle case where max level reached
-      if (error instanceof AxiosError && error.response?.status === 422) {
+      if (
+        error instanceof AxiosError &&
+        (error.response?.status === 422 || error.response?.status === 501)
+      ) {
         if (mode === "qrCode") {
           navigate("/journal/qr-code-fail");
         } else {
