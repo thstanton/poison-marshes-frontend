@@ -36,7 +36,7 @@ const WellfieldHome = () => {
         {/* Hero Section */}
         <section
           id="home"
-          className="bg-wf-hero-bg flex min-h-96 flex-col items-center justify-center gap-4 bg-cover bg-center text-center"
+          className="flex min-h-96 flex-col items-center justify-center gap-4 bg-wf-hero-bg bg-cover bg-center text-center"
         >
           <img src={WEStacked} alt="Wellfield Energy" className="w-44" />
           <img
@@ -86,24 +86,50 @@ const WellfieldHome = () => {
             <div className="rounded-md bg-white p-6 shadow-md">
               <h3 className="mb-2 text-xl font-bold">Eco-Conscious Energy</h3>
               <p className="text-gray-700">
-                Our consulting services help businesses identify opportunities,
-                streamline operations, and achieve their goals with tailored
-                strategies.
+                At Wellfield Energy, we believe in powering the future
+                sustainably. Our commitment to green energy sets us apart,
+                offering eco-conscious solutions that are as kind to the planet
+                as they are powerful. We harness the cleanest, most reliable
+                renewable energy sources, from solar to wind, ensuring your home
+                or business operates on 100% green power. By choosing Wellfield
+                Energy, you’re not just reducing your carbon footprint—you’re
+                supporting a brighter, more sustainable future for generations
+                to come. Join us in making energy clean, affordable, and
+                accessible for all.
               </p>
             </div>
             <div className="rounded-md bg-white p-6 shadow-md">
-              <h3 className="mb-2 text-xl font-bold">Fair Prices</h3>
+              <h3 className="mb-2 text-xl font-bold">
+                Affordable Excellence for Our Valued Customers
+              </h3>
               <p className="text-gray-700">
-                We offer expert financial advisory services to help you navigate
-                complex financial landscapes and make informed decisions.
+                At Wellfield Energy, we believe that going green shouldn’t come
+                at a premium. That’s why we offer fair, transparent pricing that
+                makes sustainable energy accessible to everyone. We understand
+                that our customers are at the heart of everything we do, and we
+                are committed to providing not only top-tier green energy but
+                also exceptional value. With flexible plans and competitive
+                rates, we ensure you get the best possible service without
+                compromising your budget. At Wellfield Energy, your satisfaction
+                is our priority, and we’re dedicated to powering your life
+                affordably and sustainably.
               </p>
             </div>
             <div className="rounded-md bg-white p-6 shadow-md">
-              <h3 className="mb-2 text-xl font-bold">The Genesis Project</h3>
+              <h3 className="mb-2 text-xl font-bold">
+                Pioneering Zero-Carbon Energy in Alrewas
+              </h3>
               <p className="text-gray-700">
-                Our technology solutions are designed to enhance your business
-                operations, from software development to IT infrastructure
-                management.
+                Wellfield Energy is thrilled to announce our groundbreaking
+                pilot project in the village of Alrewas, where we’re introducing
+                Janus, a revolutionary new technology poised to deliver the
+                world’s first zero-carbon emission energy. This innovative
+                system not only eliminates carbon emissions entirely but also
+                offers energy at even lower prices than traditional green
+                sources. Our work in Alrewas marks a major milestone in our
+                mission to make sustainable, affordable energy a reality for
+                all. We’re proud to lead this pioneering effort, setting a new
+                standard for what’s possible in eco-friendly power.
               </p>
             </div>
           </div>

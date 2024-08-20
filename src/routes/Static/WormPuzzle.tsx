@@ -1,6 +1,7 @@
 import { AdvancedImage } from "@cloudinary/react";
 import { cld } from "../../main";
 import { CloudinaryImage } from "@cloudinary/url-gen/index";
+import BackButton from "../../components/UI/BackButton";
 
 export default function WormPuzzle() {
   const image1 = cld.image("PM_A1S2_puzzle_2_zh65au");
@@ -20,6 +21,7 @@ export default function WormPuzzle() {
         <Polaroid image={image3} caption="Garage" />
         <Polaroid image={image4} caption="Village Hall" />
       </div>
+      <BackButton />
     </div>
   );
 }

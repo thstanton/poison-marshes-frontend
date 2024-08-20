@@ -24,6 +24,7 @@ import NewsArticle from "./routes/Static/NewsArticle";
 import WormPuzzle from "./routes/Static/WormPuzzle";
 import EmailPage from "./routes/Journal/EmailPage";
 import WormRiddle from "./routes/Static/WormRiddle";
+import SpottersGuide from "./routes/Static/SpottersGuide";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -140,6 +141,10 @@ export default function App() {
         {
           path: "lzzc0c7qo0",
           element: <WormRiddle />,
+        },
+        {
+          path: "m02fi2t3bn",
+          element: <SpottersGuide />,
         },
       ],
     },
